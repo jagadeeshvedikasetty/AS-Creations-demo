@@ -25,20 +25,20 @@ export default async function PortfolioHome() {
         {/* Mobile Video (Hidden on screens md and up) */}
         <video 
           src="/mobile-animation.mp4"
-          autoPlay 
-          loop 
-          muted 
-          playsInline
+          autoPlay={true}
+          loop={true}
+          muted={true}
+          playsInline={true}
           className="w-full h-full object-cover block md:hidden"
         />
         
         {/* Desktop Video (Hidden on small screens, block on md and up) */}
         <video 
           src="/desktop-animation.mp4"
-          autoPlay 
-          loop 
-          muted 
-          playsInline
+          autoPlay={true}
+          loop={true}
+          muted={true}
+          playsInline={true}
           className="w-full h-full object-cover hidden md:block"
         />
       </section>
