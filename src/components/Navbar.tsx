@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
@@ -18,6 +18,14 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const [hoveredPath, setHoveredPath] = useState<string | null>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isOpen) setIsOpen(false)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isOpen])
 
   return (
     <nav className={`fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl px-6 py-2 bg-white/60 dark:bg-black/30 backdrop-blur-md border border-white/40 dark:border-white/10 transition-all duration-300 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] saturate-150 ${isOpen ? 'rounded-3xl' : 'rounded-full md:rounded-full'}`}>
@@ -84,7 +92,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10, height: 0 }}
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: -10, height: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.1, ease: "easeOut" }}
             className="md:hidden mt-4 pb-4 border-t border-black/10 dark:border-white/10 overflow-hidden flex flex-col gap-4 text-center text-sm tracking-widest uppercase font-light text-black/70 dark:text-white/90"
           >
             {navLinks.map((link) => (
