@@ -81,9 +81,10 @@ export function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20, height: 0 }}
+            initial={{ opacity: 0, y: -10, height: 0 }}
             animate={{ opacity: 1, y: 0, height: 'auto' }}
-            exit={{ opacity: 0, y: -20, height: 0 }}
+            exit={{ opacity: 0, y: -10, height: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className="md:hidden mt-4 pb-4 border-t border-black/10 dark:border-white/10 overflow-hidden flex flex-col gap-4 text-center text-sm tracking-widest uppercase font-light text-black/70 dark:text-white/90"
           >
             {navLinks.map((link) => (
